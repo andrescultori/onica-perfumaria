@@ -46,6 +46,7 @@ export default function AdminGate() {
         <Link to="/admin" className="admin-brand"><img src="/logo-onica.png" alt="Ônica" height={40} /><span>Painel · Identidade Olfativa</span></Link>
         <div className="admin-user">
           <span className="muted">{email}</span>
+          <Link to="/admin/senha" className="link">Alterar senha</Link>
           <button className="btn ghost sm" onClick={async () => { await supabase.auth.signOut(); nav("/admin/login"); }}>Sair</button>
         </div>
       </header>

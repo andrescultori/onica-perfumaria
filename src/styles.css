@@ -29,6 +29,7 @@ a { color: var(--gold-dark); }
 .brand { text-align: center; padding: 8px 0 4px; }
 .brand img { max-width: 62%; height: auto; mix-blend-mode: multiply; transition: max-width .3s; }
 .brand.compact img { max-width: 34%; }
+.center-inner { display: grid; place-items: center; padding: 24px 0; }
 .login-logo, .admin-brand img { mix-blend-mode: multiply; }
 .intro { text-align: center; margin: 8px 0 22px; }
 .tagline { font-family: var(--font-display); font-size: 1.35rem; color: var(--gold-dark); margin: 0 0 1rem; font-style: italic; }

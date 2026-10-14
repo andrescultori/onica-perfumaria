@@ -20,7 +20,7 @@ export default function Login() {
 
   async function forgot() {
     if (!email.trim()) { setErr("Digite seu e-mail acima para receber o link de redefinição."); return; }
-    const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), { redirectTo: `${window.location.origin}/admin/login` });
+    const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), { redirectTo: `${window.location.origin}/admin/redefinir-senha` });
     setErr(error ? "Não foi possível enviar o link agora." : "Se o e-mail existir, enviamos um link para redefinir a senha.");
   }
 

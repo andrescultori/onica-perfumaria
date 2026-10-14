@@ -8,7 +8,9 @@ Formulário público em etapas para clientes da Ônica + painel admin para a equ
 | Rota | Quem acessa | O que é |
 |---|---|---|
 | `/` | Público | Formulário em 6 etapas (dados, 4 seções do questionário, revisão + consentimento LGPD) |
-| `/admin/login` | Equipe | Login e-mail/senha |
+| `/admin/login` | Equipe | Login e-mail/senha, com "Esqueci minha senha" |
+| `/admin/redefinir-senha` | Equipe | Tela aberta pelo link do e-mail de redefinição |
+| `/admin/senha` | Equipe (logada) | Alterar a própria senha |
 | `/admin` | Equipe | Lista com busca, filtro por status, contadores e exportação CSV |
 | `/admin/respostas/:id` | Equipe | Ficha completa, status, notas internas, imprimir/salvar PDF, links de WhatsApp/e-mail/Instagram |
 
@@ -27,7 +29,7 @@ npm run dev
 ## Deploy (Vercel)
 1. Importe o repositório na Vercel (framework: Vite — `vercel.json` já cuida do SPA).
 2. Variáveis de ambiente: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`.
-3. No Supabase → Authentication → URL Configuration, adicione a URL do deploy em *Redirect URLs* (usada no "esqueci minha senha").
+3. No Supabase → Authentication → URL Configuration, defina *Site URL* como a URL do deploy e adicione `https://SEU-DOMINIO/admin/redefinir-senha` em *Redirect URLs* (necessário para o "esqueci minha senha").
 
 ## Liberar membros da equipe
 1. Supabase → Authentication → Users → **Add user** (e-mail + senha, marque *Auto Confirm*).
