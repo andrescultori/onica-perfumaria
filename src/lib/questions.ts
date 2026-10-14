@@ -20,22 +20,22 @@ export interface Question {
 
 export const SECTIONS = [
   { title: "Seus dados", subtitle: "Para a equipe da Ônica falar com você" },
-  { title: "Sobre você e sua clínica", subtitle: "Conte quem você é e a atmosfera que deseja" },
+  { title: "Sobre você e seu negócio", subtitle: "Conte quem você é e a atmosfera que deseja" },
   { title: "Seus gostos olfativos", subtitle: "O que encanta (e o que incomoda) o seu olfato" },
-  { title: "A identidade olfativa da clínica", subtitle: "A assinatura que vai representar o seu espaço" },
+  { title: "A identidade olfativa do seu negócio", subtitle: "A assinatura que vai representar o seu espaço" },
   { title: "Os produtos que vamos desenvolver", subtitle: "Home spray, perfume de tecidos e lembrancinhas" },
 ] as const;
 
 export const QUESTIONS: Question[] = [
-  // Seção 1 — Sobre você e sua clínica
+  // Seção 1 — Sobre você e seu negócio
   {
     id: "q1", section: 1, type: "textarea", required: true,
-    label: "Qual é a sua profissão, qual é a especialidade da clínica e qual é o nome dela?",
-    placeholder: "Ex.: Sou dentista, a clínica é de ortodontia e se chama…",
+    label: "Qual é a sua profissão, qual é a especialidade do seu negócio e qual é o nome dele?",
+    placeholder: "Ex.: Sou dentista, trabalho com ortodontia e meu negócio se chama…",
   },
   {
     id: "q2", section: 1, type: "single", required: true, other: true,
-    label: "Como você gostaria que seus pacientes se sentissem ao entrar na clínica?",
+    label: "Como você gostaria que seus clientes se sentissem ao entrar no seu negócio?",
     options: [
       "Acolhidos e confortáveis",
       "Tranquilos e relaxados",
@@ -46,7 +46,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "q3", section: 1, type: "single", required: true,
-    label: "Como você descreveria o estilo da clínica e sua decoração?",
+    label: "Como você descreveria o estilo do seu negócio e sua decoração?",
     options: [
       "Clean e minimalista",
       "Moderna e sofisticada",
@@ -58,8 +58,23 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "q4", section: 1, type: "textarea",
-    label: "Quais são as principais cores e a paleta de cores da clínica?",
+    label: "Quais são as principais cores e a paleta de cores do seu negócio?",
     placeholder: "Ex.: branco, off-white, madeira clara e detalhes em verde…",
+  },
+
+  {
+    id: "q20", section: 1, type: "multi", other: true, otherLabel: "Outro",
+    label: "Qual é o perfil predominante dos seus clientes?",
+    help: "Pode marcar mais de um.",
+    options: [
+      "Crianças",
+      "Adolescentes",
+      "Adultos",
+      "Idosos",
+      "Gestantes",
+      "Pessoas em tratamento de saúde",
+      "Público variado",
+    ],
   },
 
   // Seção 2 — Seus gostos olfativos
@@ -81,6 +96,25 @@ export const QUESTIONS: Question[] = [
     ],
   },
   {
+    id: "q18", section: 2, type: "multi",
+    label: "Quais sensações você prefere em um perfume?",
+    help: "Pode marcar mais de uma.",
+    options: [
+      "Cheiro de banho tomado",
+      "Roupa limpa e recém-lavada",
+      "Flores frescas",
+      "Jardim verde após a chuva",
+      "Frutas frescas",
+      "Brisa do mar",
+      "Madeiras elegantes",
+      "Flores sofisticadas",
+      "Doçura cremosa",
+      "Chá e ervas",
+      "Perfume de hotel sofisticado",
+      "Aroma confortável, como um abraço",
+    ],
+  },
+  {
     id: "q6", section: 2, type: "textarea",
     label: "Quais perfumes você mais gosta de usar?",
     help: "Se possível, informe até três nomes e marcas.",
@@ -88,6 +122,23 @@ export const QUESTIONS: Question[] = [
   {
     id: "q7", section: 2, type: "textarea",
     label: "Existe algum perfume ou tipo de cheiro de que você não gosta? O que incomoda você?",
+  },
+  {
+    id: "q19", section: 2, type: "multi", other: true, otherLabel: "Outro",
+    label: "O que incomoda você em perfumes?",
+    help: "Pode marcar mais de uma.",
+    options: [
+      "Doçura excessiva",
+      "Cheiro muito forte",
+      "Sensação muito floral",
+      "Notas amadeiradas intensas",
+      "Aroma cítrico ou ácido demais",
+      "Sensação artificial",
+      "Cheiro muito atalcado ou empoado",
+      "Sensação medicinal",
+      "Cheiro que lembra produtos de limpeza",
+      "Provocam desconforto, enjoo ou dor de cabeça",
+    ],
   },
   {
     id: "q8", section: 2, type: "single", required: true,
@@ -105,10 +156,10 @@ export const QUESTIONS: Question[] = [
     help: "Pode ser cheiro de natureza, casa limpa, flores, infância, viagens, hotéis ou qualquer outra memória.",
   },
 
-  // Seção 3 — A identidade olfativa da clínica
+  // Seção 3 — A identidade olfativa do seu negócio
   {
     id: "q10", section: 3, type: "triple", required: true,
-    label: "Se a fragrância da clínica pudesse transmitir apenas três características, quais seriam?",
+    label: "Se a fragrância do seu negócio pudesse transmitir apenas três características, quais seriam?",
     help: "Exemplos: limpeza, acolhimento, sofisticação, tranquilidade, frescor, exclusividade.",
   },
   {
@@ -122,9 +173,9 @@ export const QUESTIONS: Question[] = [
     ],
   },
   {
-    id: "q12", section: 3, type: "textarea", prefix: "A clínica tem um aroma que transmite…",
-    label: "Como você gostaria que os pacientes descrevessem o cheirinho da clínica?",
-    help: "Complete: “A clínica tem um aroma que transmite…”",
+    id: "q12", section: 3, type: "textarea", prefix: "Meu negócio tem um aroma que transmite…",
+    label: "Como você gostaria que os clientes descrevessem o cheirinho do seu negócio?",
+    help: "Complete: “Meu negócio tem um aroma que transmite…”",
   },
 
   // Seção 4 — Os produtos
@@ -132,7 +183,7 @@ export const QUESTIONS: Question[] = [
     id: "q13", section: 4, type: "multi", required: true, other: true, otherLabel: "Outros",
     label: "Onde o home spray será utilizado?",
     help: "Pode marcar mais de um.",
-    options: ["Recepção e sala de espera", "Consultórios", "Banheiros e lavabos"],
+    options: ["Recepção e sala de espera", "Consultórios", "Lojas", "Salas de trabalho", "Banheiros e lavabos"],
   },
   {
     id: "q14", section: 4, type: "single", required: true,
@@ -157,7 +208,7 @@ export const QUESTIONS: Question[] = [
       "Carinho e acolhimento",
       "Gratidão pela confiança",
       "Sofisticação e exclusividade",
-      "Uma lembrança especial da clínica",
+      "Uma lembrança especial do meu negócio",
     ],
   },
   {

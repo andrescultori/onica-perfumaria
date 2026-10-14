@@ -106,7 +106,7 @@ export default function FormPage() {
           <h2>Muito obrigada por compartilhar suas preferências!</h2>
           <p className="lead">
             Com essas informações, poderemos selecionar as famílias olfativas mais adequadas e desenvolver
-            combinações que representem você e sua clínica.
+            combinações que representem você e seu negócio.
           </p>
           <p className="muted">
             Nosso objetivo é criar mais do que um aroma agradável: queremos construir uma identidade olfativa
@@ -127,11 +127,11 @@ export default function FormPage() {
       {step === 0 && (
         <section className="intro">
           <h1>Formulário de Identidade Olfativa</h1>
-          <p className="tagline">Uma fragrância exclusiva para você e sua clínica</p>
+          <p className="tagline">Uma fragrância exclusiva para você e seu negócio</p>
           <p>
             Olá! Seja bem-vinda a esta experiência sensorial. Este questionário vai nos ajudar a conhecer seus gostos,
-            sua personalidade e a atmosfera que você deseja transmitir na sua clínica. Com suas respostas, poderemos
-            desenvolver uma identidade olfativa que represente sua essência e torne a experiência dos pacientes ainda mais especial.
+            sua personalidade e a atmosfera que você deseja transmitir no seu negócio. Com suas respostas, poderemos
+            desenvolver uma identidade olfativa que represente sua essência e torne a experiência dos seus clientes ainda mais especial.
           </p>
           <p className="muted">Não existem respostas certas ou erradas. Responda com sinceridade!</p>
         </section>
@@ -157,8 +157,8 @@ export default function FormPage() {
             <Field label="E-mail" error={errors.has("email")} msg="Informe um e-mail válido">
               <input type="email" autoComplete="email" value={contact.email} onChange={(e) => { setContact({ ...contact, email: e.target.value }); setErrors((x) => { const n = new Set(x); n.delete("email"); return n; }); }} />
             </Field>
-            <Field label="Instagram da clínica" optional>
-              <input placeholder="@suaclinica" value={contact.instagram} onChange={(e) => setContact({ ...contact, instagram: e.target.value })} />
+            <Field label="Instagram do negócio" optional>
+              <input placeholder="@seunegocio" value={contact.instagram} onChange={(e) => setContact({ ...contact, instagram: e.target.value })} />
             </Field>
             {/* honeypot anti-robô: invisível para pessoas */}
             <input className="hp" tabIndex={-1} autoComplete="off" aria-hidden value={honey} onChange={(e) => setHoney(e.target.value)} name="website" />

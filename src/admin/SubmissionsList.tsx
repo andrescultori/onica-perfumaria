@@ -50,7 +50,7 @@ export default function SubmissionsList() {
       </div>
 
       <div className="toolbar">
-        <input className="search" placeholder="Buscar por nome, e-mail, WhatsApp, clínica…" value={q} onChange={(e) => setQ(e.target.value)} />
+        <input className="search" placeholder="Buscar por nome, e-mail, WhatsApp, negócio…" value={q} onChange={(e) => setQ(e.target.value)} />
         <select value={status} onChange={(e) => setStatus(e.target.value)} aria-label="Filtrar por status">
           <option value="todos">Todos os status</option>
           {Object.entries(STATUS_LABEL).map(([k, v]) => <option key={k} value={k}>{v}</option>)}

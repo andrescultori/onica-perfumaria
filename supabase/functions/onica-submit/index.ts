@@ -73,12 +73,12 @@ Deno.serve(async (req: Request) => {
   if (resendKey) {
     try {
       const link = adminUrl ? `${adminUrl.replace(/\/$/, "")}/admin/respostas/${data.id}` : "";
-      const clinica = esc((answers as Record<string, unknown>).q1 ?? "");
+      const negocio = esc((answers as Record<string, unknown>).q1 ?? "");
       const html = `
         <div style="font-family:Arial,sans-serif;color:#3b3a2a">
           <h2 style="color:#b8923a;margin:0 0 8px">Nova resposta — Identidade Olfativa</h2>
           <p><b>${esc(nome)}</b><br>WhatsApp: ${esc(whatsapp)}<br>E-mail: ${esc(email)}${instagram ? `<br>Instagram: ${esc(instagram)}` : ""}</p>
-          ${clinica ? `<p><b>Profissão / clínica:</b> ${clinica}</p>` : ""}
+          ${negocio ? `<p><b>Profissão / negócio:</b> ${negocio}</p>` : ""}
           ${link ? `<p><a href="${esc(link)}">Abrir ficha completa no painel</a></p>` : ""}
         </div>`;
       const r = await fetch("https://api.resend.com/emails", {
