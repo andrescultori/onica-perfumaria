@@ -1,6 +1,6 @@
-# Ônica Perfumaria — Formulário de Identidade Olfativa
+# Ônica Perfumaria — Identidade Olfativa + Registro de Vendas
 
-Formulário público em etapas para clientes da Ônica + painel admin para a equipe analisar as respostas.
+Formulário público em etapas para clientes da Ônica + painel admin para a equipe analisar as respostas e registrar/acompanhar as vendas por vendedora.
 
 **Stack:** Vite + React + TypeScript · Supabase (Postgres + Auth + Edge Function) · Vercel · Resend (aviso por e-mail)
 
@@ -13,6 +13,10 @@ Formulário público em etapas para clientes da Ônica + painel admin para a equ
 | `/admin/senha` | Equipe (logada) | Alterar a própria senha |
 | `/admin` | Equipe | Lista com busca, filtro por status, contadores e exportação CSV |
 | `/admin/respostas/:id` | Equipe | Ficha completa, status, notas internas, imprimir/salvar PDF, links de WhatsApp/e-mail/Instagram |
+| `/admin/vendas/nova` | Equipe | Registrar venda: vendedora, vários produtos, desconto em R$ ou %, pagamento, cliente, observações |
+| `/admin/vendas` | Equipe | Relatório por período/vendedora/pagamento, comissões, cancelar venda, **Baixar Excel** |
+| `/admin/produtos` | Equipe | Catálogo (nome, linha, preço, ordem, ativo) |
+| `/admin/vendedoras` | Equipe | Vendedoras e % de comissão |
 
 ## Como os dados ficam protegidos
 - Tabelas `onica_*` no projeto Supabase compartilhado `AndreScultori`. **Ninguém lê as respostas pelo navegador sem estar na allowlist** `onica_admins` (RLS). Ter conta em outro app do mesmo projeto não dá acesso.
@@ -54,6 +58,13 @@ A Edge Function `onica-submit` envia o aviso via Resend **se os secrets existire
 
 ## Identidade visual
 Paleta provisória extraída do logo, centralizada nas variáveis CSS em `src/styles.css` (`--gold`, `--olive`, `--cream`…) e fontes no `index.html`. Ao receber a identidade completa, basta trocar esses tokens e `public/logo-onica.png`.
+
+## Vendas
+- Migration `supabase/migrations/20261117_onica_vendas.sql`: tabelas `onica_products`, `onica_sellers`, `onica_sales`, `onica_sale_items` (RLS só admins) e a função `onica_create_sale`, que calcula subtotal, desconto, total e comissão **no banco** e grava venda + itens numa transação. Já cadastra os 16 produtos iniciais.
+- Venda guarda *snapshot* de nome/preço do produto, nome da vendedora e % de comissão: mudar preço ou comissão não altera vendas antigas.
+- Comissão = % da vendedora × total da venda (após desconto). Começa em 0% até a regra ser definida.
+- Vendas não são apagadas: são **canceladas** (deixam de contar nos relatórios, podem ser reativadas).
+- Excel gerado no navegador com `exceljs` (carregado só no clique): abas Vendas, Itens, Por vendedora, Por produto, Por pagamento.
 
 ## Questionário
 Definido em um único arquivo: `src/lib/questions.ts` (formulário, ficha do admin, CSV e e-mail leem dele). As perguntas 3/16 originais (cores/paleta) foram unificadas e a 14 original virou pergunta aberta + pergunta de mensagem, totalizando 17 perguntas.
