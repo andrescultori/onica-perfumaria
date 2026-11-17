@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 
 type State = "loading" | "anon" | "denied" | "ok";
@@ -8,6 +8,7 @@ export default function AdminGate() {
   const [state, setState] = useState<State>("loading");
   const [email, setEmail] = useState("");
   const nav = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     let alive = true;
@@ -43,13 +44,20 @@ export default function AdminGate() {
   return (
     <div className="admin">
       <header className="admin-bar no-print">
-        <Link to="/admin" className="admin-brand"><img src="/logo-onica.png" alt="Ônica" height={40} /><span>Painel · Identidade Olfativa</span></Link>
+        <Link to="/admin" className="admin-brand"><img src="/logo-onica.png" alt="Ônica" height={40} /><span>Painel Ônica</span></Link>
         <div className="admin-user">
           <span className="muted">{email}</span>
           <Link to="/admin/senha" className="link">Alterar senha</Link>
           <button className="btn ghost sm" onClick={async () => { await supabase.auth.signOut(); nav("/admin/login"); }}>Sair</button>
         </div>
       </header>
+      <nav className="admin-tabs no-print" aria-label="Seções do painel">
+        <NavLink to="/admin" end className={({ isActive }) => (isActive || pathname.startsWith("/admin/respostas") ? "on" : "")}>Identidade Olfativa</NavLink>
+        <NavLink to="/admin/vendas/nova">Nova venda</NavLink>
+        <NavLink to="/admin/vendas" end>Vendas</NavLink>
+        <NavLink to="/admin/produtos">Produtos</NavLink>
+        <NavLink to="/admin/vendedoras">Vendedoras</NavLink>
+      </nav>
       <div className="admin-body"><Outlet /></div>
     </div>
   );

@@ -5,6 +5,10 @@ import AdminGate from "./admin/AdminGate";
 import SubmissionsList from "./admin/SubmissionsList";
 import SubmissionDetail from "./admin/SubmissionDetail";
 import SetPassword from "./admin/SetPassword";
+import SalesReport from "./admin/vendas/SalesReport";
+import NewSale from "./admin/vendas/NewSale";
+import Products from "./admin/vendas/Products";
+import Sellers from "./admin/vendas/Sellers";
 
 export default function App() {
   return (
@@ -16,6 +20,10 @@ export default function App() {
         <Route index element={<SubmissionsList />} />
         <Route path="respostas/:id" element={<SubmissionDetail />} />
         <Route path="senha" element={<SetPassword mode="change" />} />
+        <Route path="vendas" element={<SalesReport />} />
+        <Route path="vendas/nova" element={<NewSale />} />
+        <Route path="produtos" element={<Products />} />
+        <Route path="vendedoras" element={<Sellers />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

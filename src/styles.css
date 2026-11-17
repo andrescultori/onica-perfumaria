@@ -142,3 +142,59 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--g
   .ficha { border: 0; padding: 0; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+/* Painel: abas + vendas */
+.admin-tabs { display: flex; gap: 4px; overflow-x: auto; padding: 0 12px; background: var(--paper); border-bottom: 1px solid var(--line); scrollbar-width: none; }
+.admin-tabs a { white-space: nowrap; padding: 12px 14px; text-decoration: none; color: var(--muted); font-weight: 500; font-size: .93rem; border-bottom: 2px solid transparent; }
+.admin-tabs a:hover { color: var(--olive); }
+.admin-tabs a.on, .admin-tabs a.active { color: var(--olive); border-bottom-color: var(--gold); }
+.page-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.page-head h2 { margin: 0; }
+.small { font-size: .88rem; }
+.notice { background: #fbf4df; border: 1px solid var(--gold); border-radius: 10px; padding: 12px 14px; margin-bottom: 14px; }
+.notice.ok { background: #eef3e6; border-color: #a9bf8e; }
+.sale-wrap { max-width: 680px; margin: 0 auto; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.items { display: grid; gap: 10px; }
+.item { display: grid; gap: 8px; padding: 12px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--cream); }
+.item-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.item-total { margin-left: auto; font-weight: 600; color: var(--olive); }
+.qty { display: flex; align-items: center; gap: 4px; }
+.qty input { width: 64px !important; text-align: center; padding: 8px !important; min-height: 44px !important; }
+.qty-btn { width: 44px; height: 44px; border-radius: 10px; border: 1.5px solid var(--line); background: #fff; font-size: 1.3rem; color: var(--olive); cursor: pointer; }
+.qty-btn:hover { border-color: var(--gold); }
+.add-item { margin-top: 10px; justify-self: start; }
+.disc { display: flex; gap: 8px; }
+.seg { display: flex; border: 1.5px solid var(--line); border-radius: 10px; overflow: hidden; flex: none; }
+.seg button { border: 0; background: #fff; padding: 0 14px; min-height: 48px; font: inherit; font-weight: 600; color: var(--muted); cursor: pointer; }
+.seg button.on { background: var(--gold); color: #fff; }
+.totals { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 4px; }
+.totals div { display: flex; justify-content: space-between; }
+.totals .grand { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--olive); }
+.check { display: flex; align-items: center; gap: 6px; font-size: .9rem; color: var(--muted); }
+.check input { accent-color: var(--gold-dark); width: 18px; height: 18px; }
+.toolbar .date-sm { width: auto; flex: 0 1 160px; }
+.stat-n.money { font-size: 1.45rem; }
+.report-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+.report-grid .card { padding: 16px; }
+.report-grid .wide { grid-column: 1 / -1; }
+.report-grid h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.tbl { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.tbl th, .tbl td { padding: 7px 6px; border-bottom: 1px solid var(--line); text-align: left; }
+.tbl th { color: var(--muted); font-weight: 500; font-size: .82rem; }
+.tbl .num { text-align: right; white-space: nowrap; }
+.list-title { margin: 8px 0 10px; }
+.row.sale { display: block; padding: 0; }
+.row-click { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; width: 100%; padding: 14px 16px; background: none; border: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.row.cancelada, .row.inactive { opacity: .6; }
+.sale-detail { padding: 0 16px 14px; border-top: 1px dashed var(--line); }
+.sale-detail .tbl { margin: 10px 0; }
+.edit-box { background: var(--paper); border: 1.5px solid var(--gold); border-radius: 12px; padding: 16px; margin-bottom: 10px; }
+.grid-edit { display: grid; grid-template-columns: 2fr 1.4fr 1fr .7fr; gap: 10px; margin-bottom: 8px; }
+.grid-edit.two { grid-template-columns: 2fr 1fr; }
+@media (max-width: 560px) {
+  .grid2, .report-grid, .grid-edit, .grid-edit.two { grid-template-columns: 1fr; }
+  .stat-n.money { font-size: 1.15rem; }
+}
+a.btn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; color: #fff; }
+@media (max-width: 560px) { .admin-bar { position: static; } }
